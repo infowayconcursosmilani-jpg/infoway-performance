@@ -3,7 +3,7 @@ export const dynamic='force-dynamic'
 import {useEffect,useState} from 'react'
 import Link from 'next/link'
 import {ArrowLeft,BookOpen,CheckCircle2,Clock3,Target,TriangleAlert} from 'lucide-react'
-import {createClient} from '../../../../../../lib/supabase/client'
+import {createClient} from '../../../../../lib/supabase/client'
 export default function FichaAluno({params}:{params:{id:string;studentId:string}}){
  const [d,setD]=useState<any>(null)
  useEffect(()=>{const s=createClient();s.rpc('student_academic_detail',{p_class_id:params.id,p_student_id:params.studentId}).then(({data})=>setD(data))},[])
