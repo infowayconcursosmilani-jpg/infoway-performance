@@ -17,13 +17,13 @@ export default function NovaTurma() {
     const supabase=createClient()
     const { data: course }=await supabase.from('courses').select('id').eq('slug','aluno-oficial-pmsp').single()
     if(!course){setMessage('Não foi possível localizar o curso.');setSaving(false);return}
-    const { data: turma,error }=await supabase.from('classes').insert({
-      course_id:course.id,name:form.name,start_date:form.start_date,end_date:form.end_date,
-      exam_date:form.exam_date||null,class_start_time:form.class_start_time,class_end_time:form.class_end_time,status:'preparation'
-    }).select('id').single()
-    if(error||!turma){setMessage('Não foi possível salvar. Entre com uma conta administrativa para cadastrar turmas.');setSaving(false);return}
-    if(form.recess_start&&form.recess_end) await supabase.from('class_recesses').insert({class_id:turma.id,name:'Recesso',start_date:form.recess_start,end_date:form.recess_end})
-    setMessage('Turma cadastrada com sucesso.'); setSaving(false)
+    const { data: turmaId,error }=await supabase.rpc('create_class_with_weeks',{
+      p_course_id:course.id,p_name:form.name,p_start_date:form.start_date,p_end_date:form.end_date,
+      p_exam_date:form.exam_date||null,p_class_start_time:form.class_start_time,p_class_end_time:form.class_end_time,
+      p_recess_start:form.recess_start||null,p_recess_end:form.recess_end||null
+    })
+    if(error||!turmaId){setMessage('Não foi possível salvar. Entre com uma conta administrativa para cadastrar turmas.');setSaving(false);return}
+    setMessage('Turma e semanas acadêmicas criadas com sucesso.'); setSaving(false)
   }
 
   return <main className="formPage">
