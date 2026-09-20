@@ -1,4 +1,6 @@
 'use client'
+
+export const dynamic = 'force-dynamic'
 import { FormEvent,useEffect,useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft,BookOpen,Plus } from 'lucide-react'
