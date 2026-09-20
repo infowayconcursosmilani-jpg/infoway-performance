@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Activity, BookOpen, CalendarDays, ChevronRight, GraduationCap, LayoutDashboard, Plus, Target, TrendingUp, Users } from 'lucide-react'
 
 const turmas = [
@@ -21,7 +22,7 @@ export default function Home() {
       </aside>
 
       <section className="content">
-        <header><div><span className="eyebrow">GESTÃO ACADÊMICA</span><h1>Visão geral</h1><p>Acompanhe a preparação dos alunos antes que a prova mostre o problema.</p></div><button><Plus size={18}/> Nova turma</button></header>
+        <header><div><span className="eyebrow">GESTÃO ACADÊMICA</span><h1>Visão geral</h1><p>Acompanhe a preparação dos alunos antes que a prova mostre o problema.</p></div><Link className="primaryBtn" href="/turmas/nova"><Plus size={18}/> Nova turma</Link></header>
 
         <div className="stats">
           <article><span>Turmas ativas</span><strong>1</strong><small><CalendarDays size={15}/> primeira turma configurada</small></article>
@@ -40,7 +41,7 @@ export default function Home() {
             <div className="progress"><div></div></div>
             <footer><span>Início em 28 de setembro</span><a>Abrir turma <ChevronRight size={17}/></a></footer>
           </article>)}
-          <button className="newCard"><div><Plus size={25}/></div><strong>Cadastrar nova turma</strong><span>Defina início, término, recesso e o sistema organiza as semanas.</span></button>
+          <Link href="/turmas/nova" className="newCard"><div><Plus size={25}/></div><strong>Cadastrar nova turma</strong><span>Defina início, término, recesso e o sistema organiza as semanas.</span></Link>
         </div>
 
         <section className="vision"><div className="visionIcon"><Target size={28}/></div><div><span className="eyebrow">OBJETIVO DO SISTEMA</span><h2>Da aula assistida ao conteúdo aprendido.</h2><p>O Infoway Performance acompanhará quatro dimensões: <b>acompanhamento das aulas</b>, <b>consolidação do conteúdo</b>, <b>desempenho</b> e <b>constância</b>.</p></div></section>
