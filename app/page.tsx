@@ -12,7 +12,7 @@ export default function Home() {
         <div className="brand"><div className="brandMark">IW</div><div><strong>INFOWAY</strong><span>PERFORMANCE</span></div></div>
         <nav>
           <a className="active"><LayoutDashboard size={19}/> Visão geral</a>
-          <a><GraduationCap size={19}/> Turmas</a>
+          <Link href="/turmas"><GraduationCap size={19}/> Turmas</Link>
           <a><Users size={19}/> Alunos</a>
           <a><BookOpen size={19}/> Aulas e conteúdos</a>
           <a><Target size={19}/> Simulados</a>
