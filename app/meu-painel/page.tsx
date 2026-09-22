@@ -6,8 +6,8 @@ import {BookOpen,CheckCircle2,Clock3,Target,AlertCircle,ChevronRight} from 'luci
 import {createClient} from '../../lib/supabase/client'
 
 export default function MeuPainel(){
- const [data,setData]=useState<any>(null),[index,setIndex]=useState<any>(null),[loading,setLoading]=useState(true)
- useEffect(()=>{const s=createClient();Promise.all([s.rpc('my_student_dashboard'),s.rpc('my_infoway_index')]).then(([a,b])=>{setData(a.data);setIndex(b.data);setLoading(false)})},[])
+ const [data,setData]=useState<any>(null),[index,setIndex]=useState<any>(null),[mission,setMission]=useState<any>(null),[loading,setLoading]=useState(true)
+ useEffect(()=>{const s=createClient();Promise.all([s.rpc('my_student_dashboard'),s.rpc('my_infoway_index'),s.rpc('my_daily_mission')]).then(([a,b,m])=>{setData(a.data);setIndex(b.data);setMission(m.data);setLoading(false)})},[])
  if(loading)return <main className="studentPage"><div className="studentShell"><p>Carregando seu Performance...</p></div></main>
  const m=data?.metrics||{},name=(data?.profile?.name||'Aluno').split(' ')[0],acc=m.questions?Math.round((m.correct/m.questions)*100):0
  return <main className="studentPage"><div className="studentShell"><header className="studentHeader"><div><span className="eyebrow">INFOWAY PERFORMANCE</span><h1>Olá, {name}.</h1><p>{data?.active_class?.name||'Sua preparação começa aqui.'}</p></div><div className="studentScore"><span>ÍNDICE INFOWAY</span><strong>{index?.score==null?'—':index.score}</strong><small>{index?.data_quality==='sufficient'?'índice provisório v1':'dados iniciais'}</small></div></header>
