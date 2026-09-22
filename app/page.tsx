@@ -11,12 +11,12 @@ export default function Home() {
       <aside className="sidebar">
         <div className="brand"><div className="brandMark">IW</div><div><strong>INFOWAY</strong><span>PERFORMANCE</span></div></div>
         <nav>
-          <a className="active"><LayoutDashboard size={19}/> Visão geral</a>
+          <Link href="/" className="active"><LayoutDashboard size={19}/> Visão geral</Link>
           <Link href="/turmas"><GraduationCap size={19}/> Turmas</Link>
-          <a><Users size={19}/> Alunos</a>
-          <a><BookOpen size={19}/> Aulas e conteúdos</a>
-          <a><Target size={19}/> Simulados</a>
-          <a><TrendingUp size={19}/> Desempenho</a>
+          <Link href="/turmas"><Users size={19}/> Alunos</Link>
+          <Link href="/turmas"><BookOpen size={19}/> Aulas e conteúdos</Link>
+          <Link href="/turmas"><Target size={19}/> Simulados</Link>
+          <Link href="/turmas"><TrendingUp size={19}/> Desempenho</Link>
         </nav>
         <div className="sidebarBottom"><span>PAINEL ADMINISTRATIVO</span><strong>Infoway Concursos</strong></div>
       </aside>
@@ -39,7 +39,7 @@ export default function Home() {
             <h3>{t.nome}</h3><p>{t.periodo}</p>
             <div className="classData"><div><span>DURAÇÃO</span><strong>{t.semanas} semanas</strong></div><div><span>ALUNOS</span><strong>{t.alunos}</strong></div><div><span>AULAS</span><strong>18h20–22h40</strong></div></div>
             <div className="progress"><div></div></div>
-            <footer><span>Início em 28 de setembro</span><a>Abrir turma <ChevronRight size={17}/></a></footer>
+            <footer><span>Início em 28 de setembro</span><Link href="/turmas">Abrir turma <ChevronRight size={17}/></Link></footer>
           </article>)}
           <Link href="/turmas/nova" className="newCard"><div><Plus size={25}/></div><strong>Cadastrar nova turma</strong><span>Defina início, término, recesso e o sistema organiza as semanas.</span></Link>
         </div>
